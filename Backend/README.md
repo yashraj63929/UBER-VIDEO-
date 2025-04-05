@@ -29,14 +29,4 @@ The request body should be in JSON format and include the following fields:
 - **Body:**
   ```json
   {
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-    "user": {
-      "_id": "64f1c2e5b5d6c2a1b8e4f123",
-      "fullname": {
-        "firstname": "John",
-        "lastname": "Doe"
-      },
-      "email": "john.doe@example.com"
-    }
-  }
-  ```
+      "
