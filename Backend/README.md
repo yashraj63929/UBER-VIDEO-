@@ -79,3 +79,32 @@ The request body should be in JSON format and include the following fields:
       }
   }
   ```
+
+## Endpoint: `/users/profile`
+
+### Description
+This endpoint retrieves the profile information of the currently authenticated user.
+
+### Method
+`GET`
+
+### Authentication
+Requires a valid JWT token in either:
+- Cookie named 'token'
+- Authorization header using Bearer scheme
+
+### Response
+
+#### Success Response
+- **Status Code:** `200 OK`
+- **Body:**
+  ```json
+  {
+    "_id": "64f1c2e5b5d6c2a1b8e4f123",
+    "fullname": {
+      "firstname": "John",
+      "lastname": "Doe"
+    },
+    "email": "john.doe@example.com"
+  }
+  ```
