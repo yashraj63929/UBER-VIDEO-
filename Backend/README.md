@@ -108,3 +108,93 @@ Requires a valid JWT token in either:
     "email": "john.doe@example.com"
   }
   ```
+
+# Captains API Documentation
+
+## Endpoint: `/captains/register`
+
+### Description
+Register a new captain with vehicle details.
+
+### Method
+`POST`
+
+### Request Body
+```json
+{
+    "fullname": {
+        "firstname": "John", // Required, minimum 3 characters
+        "lastname": "Doe"    // Optional, minimum 3 characters if provided
+    },
+    "email": "john.doe@example.com", // Required, must be valid email format
+    "password": "password123", // Required, minimum 6 characters
+    "vehicle": {
+        "color": "Black",    // Required, minimum 3 characters
+        "plate": "ABC123",   // Required, minimum 3 characters
+        "capacity": 4,       // Required, minimum 1
+        "vehicleType": "car" // Required, must be one of: "car", "motorcycle", "auto"
+    }
+}
+```
+
+### Response
+#### Success (201 Created)
+```json
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...", // JWT token valid for 24 hours
+    "captain": {
+        "_id": "64f1c2e5b5d6c2a1b8e4f123",
+        "fullname": {
+            "firstname": "John",
+            "lastname": "Doe"
+        },
+        "email": "john.doe@example.com",
+        "status": "inactive", // Default captain status
+        "vehicle": {
+            "color": "Black",
+            "plate": "ABC123",
+            "capacity": 4,
+            "vehicleType": "car"
+        }
+    }
+}
+```
+
+## Endpoint: `/captains/login`
+
+### Description
+Authenticate a captain and get access token.
+
+### Method
+`POST`
+
+### Request Body
+```json
+{
+    "email": "john.doe@example.com", // Required, must be valid email
+    "password": "password123"        // Required, minimum 6 characters
+}
+```
+
+### Response
+#### Success (200 OK)
+```json
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...", // JWT token valid for 24 hours
+    "captain": {
+        "_id": "64f1c2e5b5d6c2a1b8e4f123",
+        "fullname": {
+            "firstname": "John",
+            "lastname": "Doe"
+        },
+        "email": "john.doe@example.com",
+        "status": "inactive",
+        "vehicle": {
+            "color": "Black",
+            "plate": "ABC123",
+            "capacity": 4,
+            "vehicleType": "car"
+        }
+    }
+}
+```
